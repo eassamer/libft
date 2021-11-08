@@ -5,20 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: eassamer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 09:49:58 by eassamer          #+#    #+#             */
-/*   Updated: 2021/11/07 09:56:51 by eassamer         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: eassamer <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 09:28:11 by eassamer          #+#    #+#             */
-/*   Updated: 2021/11/07 09:49:37 by eassamer         ###   ########.fr       */
+/*   Updated: 2021/11/08 13:27:11 by eassamer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +39,8 @@ char	**ft_split(char const *s, char c)
 	const char	*start;
 
 	i = 0;
+	if (!s)
+		return (NULL);
 	split = (char **)malloc((ft_count(s, c) + 1) * sizeof(*split));
 	if (!split)
 		return (0);
@@ -60,11 +50,9 @@ char	**ft_split(char const *s, char c)
 			s++;
 		start = s;
 		len = 0;
-		while (*s && *s != c)
-		{
+		s--;
+		while (*(++s) && *s != c)
 			len++;
-			s++;
-		}
 		if (*(s - 1) != c)
 			split[i++] = ft_substr(start, 0, len);
 	}

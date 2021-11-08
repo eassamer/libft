@@ -6,21 +6,21 @@
 /*   By: eassamer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 14:12:17 by eassamer          #+#    #+#             */
-/*   Updated: 2021/11/07 15:08:10 by eassamer         ###   ########.fr       */
+/*   Updated: 2021/11/08 08:30:31 by eassamer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"libft.h"
 
-t_list  *ft_lstlast(t_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
-        while(lst != NULL)
-        {
-                if(!lst->next)
-                {
-                        return (lst);
-                }
-                lst = lst->next;
-        }
-        return (lst);
+	while (lst)
+	{
+		if (!lst->next)
+		{
+			return (lst);
+		}
+		lst = lst->next;
+	}
+	return (lst);
 }
