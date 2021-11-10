@@ -6,60 +6,51 @@
 /*   By: eassamer <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 11:00:00 by eassamer          #+#    #+#             */
-/*   Updated: 2021/11/06 11:33:47 by eassamer         ###   ########.fr       */
+/*   Updated: 2021/11/10 07:58:22 by eassamer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include"libft.h"
 
-static int	num_len(int n)
+static size_t	ft_len(int nb)
 {
 	int	len;
 
-	if (n <= 0)
-		len = 1;
-	while (n != 0)
+	len = 0;
+	if (nb <= 0)
+		len++;
+	while (nb)
 	{
 		len++;
-		n = n / 10;
+		nb = nb / 10;
 	}
 	return (len);
 }
 
-static char	*str_convert(char *str, int result, int len)
-{
-	while (result > 0)
-	{
-		str[len--] = 48 + (result % 10);
-		result = result / 10;
-	}
-	return (str);
-}
-
 char	*ft_itoa(int n)
 {
-	int		sign;
-	int		result;
 	int		len;
-	char	*nstr;
+	char	*str;
+	long	nb;
 
-	sign = 1;
-	len = num_len(n);
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	nstr = (char *)malloc(sizeof(char) * (len + 1));
-	if (!nstr)
+	len = ft_len(n);
+	nb = n;
+	str = malloc(sizeof(char) * len + 1);
+	if (!str)
 		return (NULL);
-	nstr[len--] = '\0';
-	if (len == 0)
-		nstr[0] = '0';
-	if (n < 0)
+	if (nb < 0)
 	{
-		sign *= -1;
-		result = n * -1;
-		nstr [0] = '-';
+		str[0] = '-';
+		nb = -nb;
 	}
-	else
-		result = n;
-	nstr = str_convert(nstr, result, len);
-	return (nstr);
+	if (nb == 0)
+		str[0] = '0';
+	str[len--] = '\0';
+	while (nb)
+	{
+		str[len] = nb % 10 + '0';
+		len--;
+		nb = nb / 10;
+	}
+	return (str);
 }

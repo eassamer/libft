@@ -6,53 +6,90 @@
 #    By: eassamer <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/02 14:32:38 by eassamer          #+#    #+#              #
-#    Updated: 2021/11/04 16:00:57 by eassamer         ###   ########.fr        #
+#    Updated: 2021/11/11 00:09:55 by eassamer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME=libft.a
+NAME =    libft.a
 
-CC=gcc
+SRCS =    ft_atoi.c \
+        ft_isalpha.c \
+        ft_isalpha.c \
+        ft_isalpha.c \
+        ft_itoa.c \
+        ft_itoa.c \
+        ft_itoa.c \
+        ft_memmove.c \
+        ft_memmove.c \
+        ft_memmove.c \
+        ft_putnbr_fd.c \
+        ft_putnbr_fd.c \
+        ft_putnbr_fd.c \
+        ft_strdup.c \
+        ft_strlcpy.c \
+        ft_strnstr.c \
+        ft_tolower.c \
+        ft_bzero.c \
+        ft_isascii.c \
+        ft_memchr.c \
+        ft_memset.c \
+        ft_putstr_fd.c \
+        ft_striteri.c \
+        ft_strlen.c \
+        ft_strrchr.c \
+        ft_toupper.c \
+        ft_calloc.c \
+        ft_isdigit.c \
+        ft_memcmp.c \
+        ft_putchar_fd.c \
+        ft_split.c \
+        ft_strjoin.c \
+        ft_strmapi.c \
+        ft_strtrim.c \
+        ft_isalnum.c \
+        ft_isprint.c \
+        ft_memcpy.c \
+        ft_putendl_fd.c \
+        ft_strchr.c \
+        ft_strlcat.c \
+        ft_strncmp.c \
+        ft_substr.c
 
-CFLAGS=-Wall -Wextra -Werror
+B_SRCS =    ft_lstnew.c \
+            ft_lstadd_front.c \
+            ft_lstsize.c \
+            ft_lstlast.c \
+            ft_lstadd_back.c \
+            ft_lstdelone.c \
+            ft_lstclear.c \
+            ft_lstiter.c \
+            ft_lstmap.c
 
-RM=rm -f
+OBJS = $(SRCS:.c=.o)
 
-LDFLAGS=-L.
+B_OBJS = $(B_SRCS:.c=.o)
 
-LDLIBS=-lft
+CFLAGS = -Wall -Werror -Wextra
 
-#SRC = ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c \
-	  ft_isascii.c ft_isdigit.c ft_isprint.c ft_memcpy
-SRC = $(wildcard *.c)
+RM = rm -f
 
-OBJ = $(SRC:.c=.o)
-
-INC = ./inc/
-
-$(NAME): $(OBJ)
-		ar rc $(NAME) $(OBJ)
-		ranlib $(NAME)
-
-%.o: %.c
-		$(CC) -I. -o $@ -c $? $(CFLAGS)
+AR = ar -rcs
 
 all: $(NAME)
 
-clean:
-		$(RM) $(OBJ)
+$(NAME):$(OBJS)
+	$(AR) $(NAME) $(OBJS)
 
-fclean: clean
-		$(RM) $(NAME)
+#%.o: %.c
+#	gcc $(CFLAGS) -c $< -o $@
+
+bonus:$(B_OBJS) $(OBJS)
+	$(AR) $(NAME) $(B_OBJS) $(OBJS)
+
+clean:
+	$(RM) $(OBJS) $(B_OBJS)
+
+fclean:clean
+	$(RM) $(NAME)
 
 re: fclean all
-
-.PHONY: clean clean
-
-# so:
-# 	$(CC) -fPIC $(CFLAGS) $(SRC)
-# 	gcc -shared -o libft.so $(OBJ)
-
-
-HEADER_DIR="includes"
-SRC_DIR="srcs"
