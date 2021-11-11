@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: eassamer <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: eassamer <eassamer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/02 14:32:38 by eassamer          #+#    #+#              #
-#    Updated: 2021/11/11 00:09:55 by eassamer         ###   ########.fr        #
+#    Updated: 2021/11/11 02:47:40 by eassamer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,7 +73,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 RM = rm -f
 
-AR = ar -rcs
+AR = @ar -rcs
 
 all: $(NAME)
 
