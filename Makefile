@@ -6,7 +6,7 @@
 #    By: eassamer <eassamer@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/02 14:32:38 by eassamer          #+#    #+#              #
-#    Updated: 2021/11/11 02:47:40 by eassamer         ###   ########.fr        #
+#    Updated: 2021/11/11 08:50:59 by eassamer         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,8 +80,8 @@ all: $(NAME)
 $(NAME):$(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
-#%.o: %.c
-#	gcc $(CFLAGS) -c $< -o $@
+%.o: %.c
+	gcc $(CFLAGS) -c $< -o $@
 
 bonus:$(B_OBJS) $(OBJS)
 	$(AR) $(NAME) $(B_OBJS) $(OBJS)

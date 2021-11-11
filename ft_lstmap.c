@@ -6,11 +6,12 @@
 /*   By: eassamer <eassamer@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 02:36:21 by eassamer          #+#    #+#             */
-/*   Updated: 2021/11/11 02:50:00 by eassamer         ###   ########.fr       */
+/*   Updated: 2021/11/11 08:34:14 by eassamer         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
 	t_list	*new_lst;
